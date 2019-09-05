@@ -1,0 +1,77 @@
+<head>
+    <title>Registration Form</title>
+    <style>
+   form div {
+    margin-bottom: 1em;
+   }
+   div.submit input {
+   margin-left: 165px;
+   }
+   label.field {
+    display: block;
+    float: left;
+    margin-right: 15px;
+    width: 150px;
+    text-align: right;
+   }
+   input[type="text"], select, textarea {
+    width: 300px;
+    font: 18px Verdana;
+    border: solid 2px #666;
+    background-color: skyblue;
+   }
+   div.required label.field {
+   font-weight: bold;
+   }
+   div.required input, div.required select {
+   background-color: rgb(102, 132, 170);
+   border: solid 2px #000;
+   font-weight: bold;
+   }
+   
+</style>
+ </head>
+ <body>
+ <h1>Registration Form</h1>
+ <form action="/register" method="post"
+enctype="multipart/form-data">
+<div class="required">
+<label class="field" for="name">Name</label>
+<input id="name" type="text">
+</div>
+<div class="required">
+<label class="field">Gender</label>
+<label><input type="radio" name="gender" value="male"> male</label>
+<label><input type="radio" name="gender" value="female"> female</label>
+</div>
+<div class="required">
+<label class="field">Operating System</label>
+<select id="os">
+<option value="windows">Windows</option>
+<option value="macos">Mac OS</option>
+<option value="linux">Linux</option>
+<option vvalue="other">Other ...</option>
+</select>
+</div>
+<div>
+<label class="field">Toys</label>
+<label><input type="checkbox" name="toy" value="digicam"> Digital
+Camera</label>
+<label><input type="checkbox" name="toy" value="phone"> Smartphone
+</label>
+<label><input type="checkbox" name="toy" value="tablet"> Tablet</label>
+</div>
+<div>
+<label class="field" for="portrait">Portrait</label>
+<input type="file" id="portrait">
+</div>
+<div>
+<label class="field" for="bio">Mini Biography</label>
+<textarea id="bio" rows="6" cols="40"></textarea>
+</div>
+<div class="submit">
+<input type="submit" value="register">
+</div>
+ </form>
+ </body>
+</html>

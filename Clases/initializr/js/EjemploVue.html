@@ -1,0 +1,109 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body class="mibody">
+   <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    
+  
+    
+    <div id="AppVue">
+        <div class="container">
+            <br>
+            <div class="panel panel-heading" id="centrado">
+            <div class="row" >
+                <div id="clientes" class="col-sm-12 col-md-4">
+                    <h1>Obtener clientes: {{ cantidad }}</h1>
+                    &nbsp <input class="custom-range" id="customRange1" type="range" max="8" min="3"  v-model="cantidad" >
+                    
+                    <br>
+                    <button class="btn btn-info" v-on:click="obtenerClientes">Obtener</button>
+            </div>
+                
+                <div id="filtros" class="col-sm-12 col-md-4">
+                    <h1>Filtros:</h1>
+                    
+                    <label>Apellido :</label>&nbsp <input type="checkbox" name="nombre" v-model="estado1"> &nbsp &nbsp  
+                    <label>Ciudad:</label>&nbsp <input type="checkbox" name="ciudad" v-model="estado2"><br>
+                    &nbsp &nbsp&nbsp <label>Nick:</label>&nbsp &nbsp<input type="checkbox" name="ciudad" v-model="estado3">&nbsp &nbsp
+                    &nbsp <label>E-amil:</label>&nbsp <input type="checkbox" name="ciudad" v-model="estado4">
+                </div>
+                <div id="buscar" class="col-sm-12 col-md-4 hidden-sm hidden-xs">
+                    <h1>Filtrar:</h1>
+                    <input type="text" name="" class="form-control" v-model="buscar" placeholder="Filtrar..">
+                    <br>
+                </div>
+                
+            </div>
+                <br>
+            </div>
+            
+                 <div class="row">
+                        <br>
+                        <br>
+                       
+                        <div class="col-xs-12 col-sm-4 col-md-3" v-for="(cliente,conta) in clientes" v-show="elFiltrado(cliente.name.first + cliente.name.last)" id="centrador">
+                       
+                        <!--Clientes <h2>cliente: {{cliente}}</h2>-->
+                       
+                        <div class="panel panel-default" >
+                            <div  id="imagens">
+                                <img v-bind:src="cliente.picture.large" class="img-circle">
+                            </div>
+                               <div id="centrador">
+                                <!---- <div  >
+                                    <h4 v-if="estado1">, {{cliente.name.last}}</h4> 
+                                </div> -->
+                                <div>
+                                    <h4 v-if="estado1">cliente: {{ cliente.name.first}}, {{cliente.name.last}} </h4>
+                                    <h4 v-else>cliente: {{ cliente.name.first}}</h4>
+                                    <h4 v-if="estado2">Ciudad: {{ cliente.location.city}} </h4>
+                                    <h4 v-if="estado3">Nick: {{ cliente.login.username}} </h4>
+                                    <h6 v-if="estado4">Mail: {{ cliente.email}} </h6>
+                                </div>
+                            </div>
+                             <div class="panel panel-footer" id="centrado" >
+                                <button v-on:click="aceptarCliente(conta)" class="btn btn-primary">Aceptar</button>
+                                <button v-on:click="rechazarCliente(conta)" class="btn btn-danger">Rechazar</button>
+                            </div>
+                         </div>
+                    </div>
+                
+                </div>
+                
+                    <br>
+                    <div class="panel panel-heading" id="contadores">
+                      <br>
+                        <label id="labz">Aceptados:{{aceptados}}</label> &nbsp &nbsp  &nbsp <label id="lebz">Rechazados:{{rechazados}}</label>                  
+                    </div>
+               <br>
+             
+        </div>
+    
+    </div>
+    
+ 
+   
+   
+   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    </body>
+</html>
